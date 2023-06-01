@@ -1,11 +1,11 @@
 # Library_Management_System
 
 
-Frontend ->ReactJS, javascript, CSS, Bootstrap,toastify,axios
+Frontend  TEch->ReactJS, javascript, CSS, Bootstrap,toastify,axios
 
 Frontend ( Software) -> Visual Code Studio
 
-Backend -> Spring boot
+BackendTech -> Spring boot
 
 Backend (Software) -> Eclipse IDE
 
