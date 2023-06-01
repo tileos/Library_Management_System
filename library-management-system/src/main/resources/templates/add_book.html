@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org"><head>
+<meta charset="ISO-8859-1">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New_Book_Form</title>
+    
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+ <!-- Custom CSS -->
+    <style>  
+        #clear {
+            display: none;
+            text-transform: uppercase;
+            font-size: small;
+            margin-bottom: 10px;
+        }
+        
+        :root {
+            --primary-color:white;
+            --secondary-color:black;    
+            /* --ternary-color:rgb(41, 39, 39); */
+        }
+        
+        .dark-theme{
+            --primary-color:black;
+            --secondary-color:white;    
+            --ternary-color:rgb(41, 39, 39);
+        }
+        
+        #clear:hover {
+            background-color: purple;
+            font-size: larger;
+            transition: 0.8s;
+            border: red;
+        }
+
+        #btn33 {
+            font-size: large;
+            background-color: purple;
+        }
+
+        #btn33:hover {
+            background-color: red;
+            transition: 1s;
+            font-size: small;
+        }
+
+          .nav-heading:hover {
+              text-shadow: none;
+              border: none;
+            }
+            
+        #searchText {
+            background-color: rgb(32, 32, 32);       
+        }
+
+        #searchText:hover {
+            transition: 1s;
+        }
+        
+        body {
+    background-image: url("F:\SWs\react\lms_trial\src\imgs\add_book_bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+        }
+      
+	h1 {
+	 font-family:aerial;
+         color:#bd8cbf;
+         text-shadow:5px 5px 5px rgb(240, 242, 243);
+	}
+      
+      a:link {
+        color: black;
+        font-size: small;
+        background-color: transparent;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+        h1 {
+            font-family: aerial;
+            color: #7b0580;
+            text-shadow: 5px 5px 5px rgba(237, 238, 238, 0.4);
+        }
+
+        #delicon:hover {
+            cursor: pointer;
+        }
+
+      .container .welcome-text {
+        padding-top: 10px;
+       }
+
+        #libraryForm {
+            border: 3px solid;
+            box-shadow: 0px 3px 20px grey, 1px 0px 3px #bd8cbf;
+            padding: 20px;
+            border-radius: 20px;
+          }
+          
+      .form-check1:hover,
+      .form-check2:hover,
+      .form-check3:hover,
+      .form-check4:hover, 
+      .form-check5:hover, 
+      .form-check6:hover {	    
+        color: rgb(241, 241, 245);
+        font-weight:bold;
+        }
+
+        #table {
+            border:3px solid rgb(214, 46, 46);
+            box-shadow:0px 3px 20px rgb(183, 22, 22),1px 0px 3px #bd8cbf;
+            padding: 10px;
+	          border-radius:20px;
+        }   
+
+        .form-control{
+            /* color:white; */
+            /* color:black; */
+            background-color: var(--ternary-color);
+        }
+        
+        #table {
+            border: 3px solid;
+            box-shadow: 0px 3px 20px grey, 1px 0px 3px #bd8cbf;
+            padding: 10px;
+            border-radius: 20px;
+        }
+ 
+    </style>
+</head>
+<body>
+
+
+    <!--Section of Adding books-->
+    <div class="container pt-4 mt-5 my-3">
+        <hr>
+       <h1 class="text-center"><font size="8px"><b>Add Your Book</b></font></h1><br/>
+        <form action="/addbook" method=post th:object="${newbook}">
+            <div class="form-group row">
+                <label for="bookName" class="col-sm-2 col-form-label">Name:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="title" placeholder="Book Name" th:field="*{title}"> 
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Author" class="col-sm-2 col-form-label">Author:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control"  name="author" placeholder="Author Name" th:field="*{author}"> 
+                </div>
+            </div>
+             <div class="form-group row">
+                <label for="Author" class="col-sm-2 col-form-label">Subject:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="subject" placeholder="Subject" th:field="*{subject}"> 
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="IsbnNo" class="col-sm-2 col-form-label">ISBN No:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="isbn" placeholder="ISBN Number" th:field="*{isbn}"> 
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="edition" class="col-sm-2 col-form-label">Publisher:</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" name="publisher" placeholder="Publisher of Book" th:field="*{publisher}"> 
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="dateofpublication" class="col-sm-2 col-form-label">Publiction Date:</label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" name="publication_date" placeholder="Date of Publication Date" th:field="*{publication_date}"> 
+            </div>
+            </div>
+             <div class="form-group row">
+                <label for="edition" class="col-sm-2 col-form-label">Quantity:</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" name="totalQuantity" placeholder="Total Books" th:field="*{totalQuantity}"> 
+                </div>
+            </div>
+             <div class="form-group row">
+                <label for="edition" class="col-sm-2 col-form-label">Availble Quantity:</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control"  name="available_quantity" placeholder="number of Books available" th:field="*{available_quantity}"> 
+                </div>
+            </div>
+           
+                <div class="row">                    
+                      
+                  <div class="form-group row">
+                <div class="col-lg-12 col-sm-10 mt-3" align="center">
+                    <button type="submit"  class="btn text-light btn-large btn-block btn-center"
+                        style="background-color: #eb7c38f3;">Add Book</button>
+                </div>
+            </div>
+        </div>
+        </form>
+
+    
+     
+      </div>
+
+</body>
+
+</html>

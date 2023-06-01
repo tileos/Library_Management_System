@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="Page.css">
+
+   
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New_Book_Form</title>
+
+      <script src="https://unpkg.com/axios/dist/axios.min.js"></script> <!-- Include Axios library -->
+
+<script>
+  const form = document.getElementById('libraryForm');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Get form input values
+    const bookName = document.getElementsByName('bookNameinput')[0].value;
+    const author = document.getElementsByName('authorinput')[0].value;
+    const subject = document.getElementsByName('subjectinput')[0].value;
+    const isbn = document.getElementsByName('isbninput')[0].value;
+    const publisher = document.getElementsByName('Publisherinput')[0].value;
+    const publicationDate = document.getElementsByName('publicationdateinput')[0].value;
+    const totalBooks = document.getElementsByName('totalBooksinput')[0].value;
+
+    // Create an object with the data
+    const bookData = {
+      title: bookName,
+      author: author,
+      subject: subject,
+      isbn: isbn,
+      publisher: publisher,
+      publicationDate: publicationDate,
+      totalQuantity: totalBooks
+    };
+
+    // Send POST request using Axios
+    axios.post('http://localhost:9010/api/book/add-book', bookData)
+      .then(function(response) {
+        console.log('Response:', response);
+        // Handle response if needed
+      })
+      .catch(function(error) {
+        console.error('Error:', error);
+        // Handle error if needed
+      });
+  });
+</script>
+
+</head>
+
+<body>
+
+
+    <!--Section of Adding books-->
+    <div class="container pt-4 mt-5 my-3">
+        <hr>
+       <h1 class="text-center"><font size="8px"><b>Add Your Book</b></font></h1><br/>
+       <form id="libraryForm" action="http://localhost:9010/api/book/add-book" method="post" onsubmit="handleFormSubmit(event)">
+        <div class="form-group row">
+                <label for="bookName" class="col-sm-2 col-form-label">Name:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="bookNameinput" placeholder="Book Name">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Author" class="col-sm-2 col-form-label">Author:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="authorinput" placeholder="Author Name">
+                </div>
+            </div>
+             <div class="form-group row">
+                <label for="Author" class="col-sm-2 col-form-label">Subject:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="subjectinput" placeholder="Subject">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="IsbnNo" class="col-sm-2 col-form-label">ISBN No:</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" name="isbninput" placeholder="ISBN Number">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="edition" class="col-sm-2 col-form-label">Publisher:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="Publisherinput" placeholder="Publisher of Book">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="dateofpublication" class="col-sm-2 col-form-label">Publiction Date:</label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" name="publicationdateinput" placeholder="Date of Publication Date">
+            </div>
+            </div>
+             <div class="form-group row">
+                <label for="edition" class="col-sm-2 col-form-label">Quantity:</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" name="totalBooksinput" placeholder="Total Books">
+                </div>
+            </div>
+                   
+                <div class="row">                    
+                      
+                  <div class="form-group row">
+                <div class="col-lg-12 col-sm-15 mt-5" align="center">
+                    <div class="container">
+                        <button type="submit" class="btn text-light btn-large btn-block btn-center"
+                        style="background-color: #eb7c38f3;">Add Book</button></div>
+                </div>
+            </div>
+        </div>
+        </form>
+
+    
+     
+      </div>
+
+</body>
+
+</html>
+
+
